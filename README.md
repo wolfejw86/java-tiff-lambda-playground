@@ -1,9 +1,14 @@
+# Credit
+
+https://aws.amazon.com/blogs/opensource/java-apis-aws-lambda/
+
 # jersey-sample serverless API
+
 The jersey-sample project, created with [`aws-serverless-java-container`](https://github.com/awslabs/aws-serverless-java-container).
 
 The starter project defines a simple `/ping` resource that can accept `GET` requests with its tests.
 
-The project folder also includes a `sam.yaml` file. You can use this [SAM](https://github.com/awslabs/serverless-application-model) file to deploy the project to AWS Lambda and Amazon API Gateway or test in local with [SAM Local](https://github.com/awslabs/aws-sam-local). 
+The project folder also includes a `sam.yaml` file. You can use this [SAM](https://github.com/awslabs/serverless-application-model) file to deploy the project to AWS Lambda and Amazon API Gateway or test in local with [SAM Local](https://github.com/awslabs/aws-sam-local).
 
 Using [Maven](https://maven.apache.org/), you can create an AWS Lambda-compatible jar file simply by running the maven package command from the projct folder.
 
@@ -47,7 +52,7 @@ $ curl -s http://127.0.0.1:3000/ping | python -m json.tool
 {
     "pong": "Hello, World!"
 }
-``` 
+```
 
 You can use the [AWS CLI](https://aws.amazon.com/cli/) to quickly deploy your application to AWS Lambda and Amazon API Gateway with your SAM template.
 
@@ -62,7 +67,7 @@ aws cloudformation deploy --template-file /your/path/output-sam.yaml --stack-nam
 ```
 
 As the command output suggests, you can now use the cli to deploy the application. Choose a stack name and run the `aws cloudformation deploy` command from the output of the package command.
- 
+
 ```
 $ aws cloudformation deploy --template-file output-sam.yaml --stack-name ServerlessJerseyApi --capabilities CAPABILITY_IAM
 ```
@@ -74,23 +79,23 @@ $ aws cloudformation describe-stacks --stack-name ServerlessJerseyApi
 {
     "Stacks": [
         {
-            "StackId": "arn:aws:cloudformation:us-west-2:xxxxxxxx:stack/ServerlessJerseyApi/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx", 
-            "Description": "AWS Serverless Jersey API - my.service::jersey-sample", 
-            "Tags": [], 
+            "StackId": "arn:aws:cloudformation:us-west-2:xxxxxxxx:stack/ServerlessJerseyApi/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx",
+            "Description": "AWS Serverless Jersey API - my.service::jersey-sample",
+            "Tags": [],
             "Outputs": [
                 {
                     "Description": "URL for application",
-                    "ExportName": "JerseySampleApi",  
+                    "ExportName": "JerseySampleApi",
                     "OutputKey": "JerseySampleApi",
                     "OutputValue": "https://xxxxxxx.execute-api.us-west-2.amazonaws.com/Prod/ping"
                 }
-            ], 
-            "CreationTime": "2016-12-13T22:59:31.552Z", 
+            ],
+            "CreationTime": "2016-12-13T22:59:31.552Z",
             "Capabilities": [
                 "CAPABILITY_IAM"
-            ], 
-            "StackName": "ServerlessJerseyApi", 
-            "NotificationARNs": [], 
+            ],
+            "StackName": "ServerlessJerseyApi",
+            "NotificationARNs": [],
             "StackStatus": "UPDATE_COMPLETE"
         }
     ]
