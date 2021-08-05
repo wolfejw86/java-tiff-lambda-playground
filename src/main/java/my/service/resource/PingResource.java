@@ -62,6 +62,7 @@ public class PingResource {
             ImageWriteParam params = writer.getDefaultWriteParam();
             params.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
             params.setCompressionType("Deflate");
+
             writer.prepareWriteSequence(null);
             writer.writeToSequence(new IIOImage(image1, null, null), params);
             writer.writeToSequence(new IIOImage(image2, null, null), params);
@@ -69,6 +70,7 @@ public class PingResource {
             writer.dispose();
 
             output.flush();
+
             String encoded = Base64.getEncoder().encodeToString(byteOutput.toByteArray());
 
             System.out.println(encoded.substring(0, 20));
