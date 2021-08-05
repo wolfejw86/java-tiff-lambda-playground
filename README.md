@@ -2,6 +2,8 @@
 
 https://aws.amazon.com/blogs/opensource/java-apis-aws-lambda/
 
+https://medium.com/@devkosal/switching-java-jdk-versions-on-macos-80bc868e686a
+
 # jersey-sample serverless API
 
 The jersey-sample project, created with [`aws-serverless-java-container`](https://github.com/awslabs/aws-serverless-java-container).
