@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: my.service.StreamLambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: s3://javatiff/e23228a80e1c3de85f51589bb1707aab
+      CodeUri: s3://javatiff/dfdc3bd1c068a27fa7ec40cf8aba1295
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 15

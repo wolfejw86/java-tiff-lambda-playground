@@ -46,7 +46,7 @@ public class PingResource {
 
             InputStream is1 = new ByteArrayInputStream(imageByte1);
             BufferedImage image1 = ImageIO.read(is1);
-            InputStream is2 = new ByteArrayInputStream(imageByte1);
+            InputStream is2 = new ByteArrayInputStream(imageByte2);
             BufferedImage image2 = ImageIO.read(is2);
             System.out.println("Maybe got 2 images at this point");
 
@@ -84,5 +84,38 @@ public class PingResource {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(upload).build();
         }
 
+    }
+
+    public BufferedImage getScaledImage(BufferedImage src, int w, int h) {
+        int original_width = src.getWidth();
+        int original_height = src.getHeight();
+        int bound_width = w;
+        int bound_height = h;
+        int new_width = original_width;
+        int new_height = original_height;
+
+        // first check if we need to scale width
+        if (original_width > bound_width) {
+            // scale width to fit
+            new_width = bound_width;
+            // scale height to maintain aspect ratio
+            new_height = (new_width * original_height) / original_width;
+        }
+
+        // then check if we need to scale even with the new height
+        if (new_height > bound_height) {
+            // scale height to fit instead
+            new_height = bound_height;
+            // scale width to maintain aspect ratio
+            new_width = (new_height * original_width) / original_height;
+        }
+
+        BufferedImage resizedImg = new BufferedImage(new_width, new_height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+        g2.setBackground(Color.WHITE);
+        g2.clearRect(0, 0, new_width, new_height);
+        g2.drawImage(src, 0, 0, new_width, new_height, null);
+        g2.dispose();
+        return resizedImg;
     }
 }
